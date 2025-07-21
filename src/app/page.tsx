@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const videoList = [
   "/video/cinematic.mp4",
   "/video/cinematic2.mp4",
-  "/video/cinematic3.mp4",
   "/video/cinematic4.mp4",
 ];
 
@@ -51,7 +50,9 @@ export default function HomePage() {
         {videoList.map((src, index) => (
           <video
             key={src}
-            ref={(el) => (videoRefs.current[index] = el!)}
+            ref={(el) => {
+              if (el) videoRefs.current[index] = el;
+            }}
             muted
             playsInline
             className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
@@ -66,10 +67,10 @@ export default function HomePage() {
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Top Navbar */}
         <header className="w-full bg-black bg-opacity-60 backdrop-blur-md p-4 border-b border-gray-700 flex items-center justify-between">
-          <h2 className="text-3xl font-bold italic text-white" style={{ fontFamily: 'Elephant, serif' }}>
+          <h2 className="text-3xl font-bold italic text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
             golfdaddy-hub.com
           </h2>
-          <nav className="flex space-x-6 text-lg font-bold text-white" style={{ fontFamily: 'Elephant, serif' }}>
+          <nav className="flex space-x-6 text-lg font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
             <a href="#" className="hover:text-green-400 transition">Home</a>
             <a href="#" className="hover:text-green-400 transition">Dashboard</a>
             <a href="#" className="hover:text-green-400 transition">Settings</a>
@@ -91,8 +92,8 @@ export default function HomePage() {
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1.1, opacity: 1 }}
                   transition={{ duration: 2 }}
-                  className="text-4xl font-bold tracking-wider"
-                  style={{ fontFamily: 'Elephant, serif' }}
+                  className="text-4xl font-bold tracking-wider text-white"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
                 >
                   Welcome to golfdaddy-hub.com 🎬
                 </motion.h1>
